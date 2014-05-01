@@ -7,10 +7,14 @@ call vundle#begin()
 "main
 Plugin 'gmarik/Vundle.vim'
 
+"cool things
 Plugin 'scrooloose/nerdtree'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'mattn/emmet-vim'
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'altercation/vim-colors-solarized'
+Plugin 'bling/vim-airline'
+"Plugin 'Valloric/YouCompleteMe'
+
 
 "syntax plugins
 Plugin 'tpope/vim-fugitive'
@@ -37,3 +41,5 @@ set background=dark
 
 "let user_emmet_expandabbr_key = '<c-e>'
 map <C-n> :NERDTreeToggle<CR>
+"always display airline
+set laststatus=2
