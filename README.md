@@ -1,4 +1,4 @@
-1) git clone https://github.com/username/repository-name.git
+1) git clone https://github.com/Czarnodziej/vim-config.git
 
 2) ln -s ~/.vim/.vimrc ~/.vimrc
 
