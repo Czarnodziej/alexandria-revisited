@@ -11,9 +11,9 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'mattn/emmet-vim'
-"Plugin 'altercation/vim-colors-solarized'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 
 
 "syntax plugins
@@ -37,7 +37,7 @@ set mouse=a
 
 syntax enable
 set background=dark
-"colorscheme solarized
+colorscheme solarized
 
 "let user_emmet_expandabbr_key = '<c-e>'
 map <C-n> :NERDTreeToggle<CR>
