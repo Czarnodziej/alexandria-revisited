@@ -13,8 +13,8 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'mattn/emmet-vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
-Plugin 'Valloric/YouCompleteMe'
-
+"Plugin 'Valloric/YouCompleteMe'
+terryma/vim-multiple-cursors
 
 "syntax plugins
 Plugin 'tpope/vim-fugitive'
