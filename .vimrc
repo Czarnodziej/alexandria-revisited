@@ -14,7 +14,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 "Plugin 'Valloric/YouCompleteMe'
-terryma/vim-multiple-cursors
+Plugin 'terryma/vim-multiple-cursors'
 
 "syntax plugins
 Plugin 'tpope/vim-fugitive'
