@@ -1,4 +1,4 @@
-1) git clone git@github.com:Czarnodziej/vim-config.git
+1) git clone git@github.com:Czarnodziej/vim-config.git ~/vim-config
 
 2) ln -s ~/vim-config/.vimrc ~/.vimrc
 
