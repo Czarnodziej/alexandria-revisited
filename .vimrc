@@ -37,7 +37,7 @@ set mouse=a
 
 syntax enable
 set background=dark
-colorscheme solarized
+"colorscheme solarized
 
 "let user_emmet_expandabbr_key = '<c-e>'
 map <C-n> :NERDTreeToggle<CR>

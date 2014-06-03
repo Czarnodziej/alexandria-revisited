@@ -1,6 +1,6 @@
-1) git clone https://github.com/Czarnodziej/vim-config.git
+1) git clone https://github.com/Czarnodziej/vim-config.git ~/vim-config
 
-2) ln -s ~/.vim/.vimrc ~/.vimrc
+2) ln -s ~/.vim/vim-config/.vimrc ~/.vimrc
 
 3) git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
