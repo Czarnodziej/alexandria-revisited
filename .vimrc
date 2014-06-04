@@ -40,6 +40,6 @@ set background=dark
 "colorscheme solarized
 
 "let user_emmet_expandabbr_key = '<c-e>'
-map <C-n> :NERDTreeToggle<CR>
+map <C-t> :NERDTreeToggle<CR>
 "always display airline
 set laststatus=2
