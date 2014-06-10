@@ -2,8 +2,6 @@
 
 2) ln -s ~/vim-config/.vimrc ~/.vimrc
 
-3) ln -s ~/vim-config/.bash_aliases ~/.bash_aliases
-
 3) git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 4) open vim and execute :BundleInstall
