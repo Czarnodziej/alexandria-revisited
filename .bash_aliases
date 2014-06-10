@@ -1,1 +1,0 @@
-/home/marcin/Dropbox/config/.bash_aliases
