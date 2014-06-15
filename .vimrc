@@ -1,7 +1,7 @@
 set nocompatible
 filetype off
-
-set rtp+=~/.vim/bundle/Vundle.vim
+"set home directory name
+set rtp+=/home/marcin/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 "main
@@ -13,7 +13,6 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'mattn/emmet-vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
-"Plugin 'Valloric/YouCompleteMe'
 Plugin 'terryma/vim-multiple-cursors'
 
 "syntax plugins
