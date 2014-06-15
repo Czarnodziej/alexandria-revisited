@@ -13,6 +13,7 @@ x) ln -s ~/vim-config/.bash_aliases ~/.bash_aliases
 (global) sudoedit /etc/bash.bashrc ->
 
 if [ -f /home/<profile name>/.bash_aliases ]; then
-. /home/<profile name>/.bash_aliases
-fi
 
+    . /home/<profile name>/.bash_aliases
+
+fi
