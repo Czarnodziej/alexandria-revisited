@@ -8,7 +8,7 @@ alias bc='bc -l'
 alias ls='ls --color=auto'
 
 ## Use a long listing format ##
-alias ll='ls -la'
+alias ll='ls -lah'
 
 ## Show hidden files ##
 alias l.='ls -d .* --color=auto'
@@ -94,6 +94,8 @@ alias poweroff='sudo /sbin/poweroff'
 alias halt='sudo /sbin/halt'
 alias shutdown='sudo /sbin/shutdown'
 
+# services
+alias service='sudo service '
 alias apl='sudo service apache reload'
 alias apr='sudo service apache restart'
 
