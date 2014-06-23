@@ -94,14 +94,7 @@ alias poweroff='sudo /sbin/poweroff'
 alias halt='sudo /sbin/halt'
 alias shutdown='sudo /sbin/shutdown'
 
-alias apl='sudo service apache reload'
-alias apr='sudo service apache restart'
-
-alias msl='sudo service mysql reload'
-alias msr='sudo service mysql restart'
-
-alias sshl='sudo service ssh reload'
-alias sshr='sudo service ssh restart'
+alias service='sudo service '
 
 ## pass options to free ##
 alias meminfo='free -m -l -t'
@@ -128,8 +121,5 @@ alias aptitude='sudo LANG=en_US aptitude'
 alias sudo='sudo '
 
 #Symfony2
-alias sf='php app/console'
-alias sfcl='php app/console cache:clear'
-alias sfroute='php app/console router:debug'
-alias sfgb='php app/console generate:bundle'
+alias sf='sudo -u www-data php bin/console'
 alias xcomposer='sudo -u www-data composer'
