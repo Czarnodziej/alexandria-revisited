@@ -36,7 +36,7 @@ alias sha1='openssl sha1'
 alias mkdir='mkdir -pv'
 
 alias diff='colordiff'
-alias mount='mount |column -t'
+#alias mount='mount |column -t'
 
 # handy shortcuts #
 alias h='history'
@@ -123,3 +123,5 @@ alias sudo='sudo '
 #Symfony2
 alias sf='sudo -u www-data php bin/console'
 alias xcomposer='sudo -u www-data composer'
+alias sfcc='sudo rm -rf var/cache/* && sudo rm -rf var/logs/*'
+alias sfccp='sudo -u www-data php bin/console cache:clear --env=prod --no-debug'
