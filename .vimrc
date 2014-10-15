@@ -41,7 +41,7 @@ set mouse=a
 syntax enable
 set number
 set background=dark
-let g:solarized_termcolors=256
+"let g:solarized_termcolors=256
 colorscheme solarized
 let g:netrw_liststyle=3
 
