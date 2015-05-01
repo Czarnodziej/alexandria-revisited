@@ -54,7 +54,9 @@ source $ZSH/oh-my-zsh.sh
 PATH="$PATH:$HOME/phpfarm/inst/bin"
 PATH="$PATH:$HOME/phpfarm/inst/current-bin"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-. ~/.nvm/nvm.sh
+if [ -f ~/.nvm/nvm.sh ]; then
+    source ~/.nvm/nvm.sh
+fi
 # manual mongodb installation
 # export PATH=$HOME/Programy/mongodb/bin:$PATH
 
