@@ -9,48 +9,29 @@
 
 dir=~/dotfiles                    # dotfiles directory
 files="vimrc zshrc"               # list of files/folders to symlink in homedir
-username="czarnodziej"            # name of my personal config files
+username="czarnodziej"            # name of personal config files
+
 ##########
 
-#### Remove old files
-
-if [-f ~/.vimrc]; then
-rm -rf ~/.vimrc
-fi
-
-if [! -f ~/.zshrc]; then
-rm -rf ~/.zshrc
-fi
-
-if [ -f ~/.oh-my-zsh/custom/plugins/$username/$username.plugin.zsh ]; then
-rm -rf ~/.oh-my-zsh/custom/plugins/$username/$username.plugin.zsh
-fi
-
-if [ -f ~/.oh-my-zsh/custom/themes/$username.zsh-theme ]; then
-rm -rf ~/.oh-my-zsh/custom/themes/$username.zsh-theme
-fi
-
-####
-
 for file in $files; do
-    echo "Creating symlink to $file in home directory."
-    ln -s $dir/$file ~/.$file
+    echo "Backing up old version and creating symlink to $file in home directory."
+    mv -v ~/.$file ~/.$file.old 2> /dev/null        
+    ln -sf $dir/$file ~/.$file
 done
 
-####
-
-install_vim_plug () {
+install_vim () {
 if [! -f ~/.vim/autoload/plug.vim]; then
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
+vim +PlugInstall +qall
 }
 
 install_zsh () {
 # Test to see if zshell is installed.  If it is:
 if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
     # Clone my oh-my-zsh repository from GitHub only if it isn't already present
-    if [[ ! -d $dir/oh-my-zsh/ ]]; then
+    if [ ! -d ~/.oh-my-zsh/ ]; then
     curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
     #symlink plugin with personal aliases...
     mkdir ~/.oh-my-zsh/custom/plugins/$username; ln -s $dir/$username.plugin.zsh ~/.oh-my-zsh/custom/plugins/$username/$username.plugin.zsh
@@ -58,8 +39,8 @@ if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
     mkdir ~/.oh-my-zsh/custom/themes; ln -s $dir/$username.zsh-theme ~/.oh-my-zsh/custom/themes/$username.zsh-theme
     fi
     # Set the default shell to zsh if it isn't currently set to zsh
-    if [[ ! $(echo $SHELL) == $(which zsh) ]]; then
-        chsh -s $(which zsh)
+    if [ ! $(echo $SHELL) == $(/bin/zsh) ]; then
+        chsh -s /bin/zsh
     fi
 
 else
@@ -69,5 +50,5 @@ fi
 }
 
 install_zsh
-install_vim_plug
+install_vim
 echo "Done!"

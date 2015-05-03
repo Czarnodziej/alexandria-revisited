@@ -17,8 +17,17 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'othree/html5-syntax.vim'
 Plug 'tpope/vim-markdown'
 Plug 'jelera/vim-javascript-syntax'
-Plug 'jQuery'
 Plug 'nanotech/jellybeans.vim'
+if v:version >= 703
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+endif
+
+"snippets
+Plug 'ervandew/supertab'
+if has('python')
+Plug 'SirVer/ultisnips'
+endif
+Plug 'honza/vim-snippets'
 
 "GIT
 Plug 'airblade/vim-gitgutter'
@@ -26,7 +35,7 @@ Plug 'tpope/vim-fugitive'
 
 "Cool shiznit
 Plug 'kien/ctrlp.vim'
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
 Plug 'ap/vim-css-color'
 Plug 'Rykka/colorv.vim'
 Plug 'tpope/vim-commentary',        { 'on': '<Plug>Commentary' }
@@ -151,10 +160,8 @@ endif
 let g:undotree_WindowLayout = 2
 nnoremap U :UndotreeToggle<CR>
 
-
 "airline buffer list
 let g:airline#extensions#tabline#enabled = 1
-
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 
@@ -264,3 +271,16 @@ let g:NERDTreeShowHidden=1
 " ----------------------------------------------------------------------------
 map  gc  <Plug>Commentary
 nmap gcc <Plug>CommentaryLine
+
+"-----------------------------------------------------------------------------
+" snippets
+"-----------------------------------------------------------------------------
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
