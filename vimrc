@@ -37,7 +37,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'kien/ctrlp.vim'
 "Plug 'scrooloose/syntastic'
 Plug 'ap/vim-css-color'
-Plug 'Rykka/colorv.vim'
 Plug 'tpope/vim-commentary',        { 'on': '<Plug>Commentary' }
 Plug 'justinmk/vim-gtfo'
 
