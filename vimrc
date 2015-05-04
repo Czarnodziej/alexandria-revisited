@@ -9,7 +9,6 @@ Plug 'mattn/emmet-vim'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'bling/vim-airline'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'mbbill/undotree',  { 'on': 'UndotreeToggle'   }
 
 "syntax plugins
 Plug 'elzr/vim-json'
@@ -20,6 +19,7 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'nanotech/jellybeans.vim'
 if v:version >= 703
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+Plug 'mbbill/undotree',  { 'on': 'UndotreeToggle'   }
 endif
 
 "snippets
