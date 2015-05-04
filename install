@@ -25,9 +25,11 @@ if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
     if [ ! -d ~/.oh-my-zsh/ ]; then
 	curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 	#symlink plugin with personal aliases...
-	mkdir ~/.oh-my-zsh/custom/plugins/$username; ln -s $dir/$username.plugin.zsh ~/.oh-my-zsh/custom/plugins/$username/$username.plugin.zsh
+	mkdir ~/.oh-my-zsh/custom/plugins/$username; 
+	ln -s $dir/$username.plugin.zsh ~/.oh-my-zsh/custom/plugins/$username/$username.plugin.zsh
 	#...and bash prompt theme
-	mkdir ~/.oh-my-zsh/custom/themes; ln -s $dir/$username.zsh-theme ~/.oh-my-zsh/custom/themes/$username.zsh-theme
+	mkdir ~/.oh-my-zsh/custom/themes; 
+	ln -s $dir/$username.zsh-theme ~/.oh-my-zsh/custom/themes/$username.zsh-theme
     fi
     # Set the default shell to zsh if it isn't currently set to zsh
     if ! [ -n "`$SHELL -c 'echo $ZSH_VERSION'`" ]; then
