@@ -71,6 +71,9 @@ cmap w!! w !sudo tee > /dev/null %
 "always display airline
 set laststatus=2
 
+"system clipboard
+set clipboard=unnamedplus
+
 "search
 set incsearch
 set ignorecase
