@@ -24,6 +24,7 @@ if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
     # Clone my oh-my-zsh repository from GitHub only if it isn't already present
     if [ ! -d ~/.oh-my-zsh/ ]; then
 	curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+	ln -sf $dir/zshrc ~/.$file
 	#symlink plugin with personal aliases...
 	mkdir ~/.oh-my-zsh/custom/plugins/$username; 
 	ln -s $dir/$username.plugin.zsh ~/.oh-my-zsh/custom/plugins/$username/$username.plugin.zsh
