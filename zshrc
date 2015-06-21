@@ -50,7 +50,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(archlinux git git-extras czarnodziej jsontools systemd tmuxinator zsh-syntax-highlighting)
+plugins=(archlinux git git-extras czarnodziej jsontools systemd tmuxinator zsh-syntax-highlighting history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
