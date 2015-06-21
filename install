@@ -26,12 +26,14 @@ if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
 	curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 	ln -sf $dir/zshrc ~/.$file
 	#symlink plugin with personal aliases...
-	mkdir ~/.oh-my-zsh/custom/plugins/$username; 
+	mkdir ~/.oh-my-zsh/custom/plugins/$username;
 	ln -s $dir/$username.plugin.zsh ~/.oh-my-zsh/custom/plugins/$username/$username.plugin.zsh
 	#...and bash prompt theme
-	mkdir ~/.oh-my-zsh/custom/themes; 
+	mkdir ~/.oh-my-zsh/custom/themes;
 	ln -s $dir/$username.zsh-theme ~/.oh-my-zsh/custom/themes/$username.zsh-theme
     fi
+    #install powerline theme
+    git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
     # Set the default shell to zsh if it isn't currently set to zsh
     if ! [ -n "`$SHELL -c 'echo $ZSH_VERSION'`" ]; then
         chsh -s $(which zsh)

@@ -5,8 +5,12 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="czarnodziej"
+#ZSH_THEME="czarnodziej"
+#ZSH_THEME="powerline"
 #ZSH_THEME="candy"
+
+ZSH_THEME="powerlevel9k/powerlevel9k"
+#POWERLEVEL9K_MODE='awesome-patched'
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -57,9 +61,6 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 if [ -f ~/.nvm/nvm.sh ]; then
     source ~/.nvm/nvm.sh
 fi
-# manual mongodb installation
-# export PATH=$HOME/Programy/mongodb/bin:$PATH
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -72,6 +73,7 @@ fi
 #   export EDITOR='mvim'
 # fi
 export EDITOR='vim'
+export TERM="xterm-256color"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
