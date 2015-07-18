@@ -115,7 +115,7 @@ alias du='du -ch'
 
 #Apps
 alias dnse='xvim /etc/dnsmasq.d/devtld.conf'
-alias dnsr='sudo service dnsmasq restart'
+alias dnsr='sudo systemctl restart dnsmasq'
 
 alias gen='LANG=en_US geany'
 #alias mc='LANG=en_US mc -b'

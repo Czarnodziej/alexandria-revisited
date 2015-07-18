@@ -50,14 +50,11 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(archlinux git git-extras czarnodziej jsontools systemd tmuxinator zsh-syntax-highlighting history-substring-search)
+plugins=(archlinux colored-man git git-extras czarnodziej jsontools systemd tmuxinator zsh-syntax-highlighting history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-PATH="$PATH:$HOME/phpfarm/inst/bin"
-PATH="$PATH:$HOME/phpfarm/inst/current-bin"
-export PATH=$HOME/bin:/usr/local/bin:$PATH
 if [ -f ~/.nvm/nvm.sh ]; then
     source ~/.nvm/nvm.sh
 fi
@@ -71,9 +68,13 @@ export TERM="xterm-256color"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-export PATH="$PATH:$HOME/.composer/vendor/bin"
-export PATH="$PATH:$HOME/Programy/firefox"
-export PATH="$PATH:$HOME/Programy/thunderbird"
-
 #zsh-syntax-highlighter
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+
+source /home/marcin/.phpbrew/bashrc
+
+# This loads nvm
+export NVM_DIR="/home/marcin/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+export DEFAULT_USER=marcin
