@@ -89,7 +89,7 @@ set si "Smart indent
 set wrap "Wrap lines
 
 "shortcuts to command mode
-nnoremap ; :
+"nnoremap ; :
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> /

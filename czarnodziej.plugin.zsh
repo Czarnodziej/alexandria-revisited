@@ -114,7 +114,7 @@ alias df='df -H'
 alias du='du -ch'
 
 #Apps
-alias dnse='xvim /etc/dnsmasq.d/devtld.conf'
+alias dnse='xvim /etc/dnsmasq.d/hosts.conf'
 alias dnsr='sudo systemctl restart dnsmasq'
 
 alias gen='LANG=en_US geany'
@@ -147,4 +147,4 @@ alias muxs='tmuxinator start startowy'
 alias muxn='tmuxinator start nasopen'
 alias cdw='cd /home/marcin/dev/www'
 alias pacman='sudo pacman'
-alias pacaupg='pacaur -Syua'
+alias sysupg='pacaur -Syua'
