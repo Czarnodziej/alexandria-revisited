@@ -1,12 +1,22 @@
 set nocompatible
 filetype off
+
+
+
+"vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall
+endif
+
 call plug#begin('~/.vim/plugged')
 
 "cool things
 Plug 'Yggdroot/indentLine', { 'on': 'IndentLinesToggle' }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'    }
 Plug 'mattn/emmet-vim'
-Plug 'chriskempson/vim-tomorrow-theme'
+"Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'bling/vim-airline'
 Plug 'terryma/vim-multiple-cursors'
 
