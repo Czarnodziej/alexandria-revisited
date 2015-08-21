@@ -1,8 +1,6 @@
 set nocompatible
 filetype off
 
-
-
 "vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -13,12 +11,12 @@ endif
 call plug#begin('~/.vim/plugged')
 
 "cool things
-Plug 'Yggdroot/indentLine', { 'on': 'IndentLinesToggle' }
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'    }
-Plug 'mattn/emmet-vim'
-"Plug 'chriskempson/vim-tomorrow-theme'
+"Plug 'Yggdroot/indentLine', { 'on': 'IndentLinesToggle' }
+"Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'    }
+"Plug 'mattn/emmet-vim'
+"Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-airline'
-Plug 'terryma/vim-multiple-cursors'
+"Plug 'terryma/vim-multiple-cursors'
 
 "syntax plugins
 Plug 'elzr/vim-json'
@@ -33,11 +31,11 @@ Plug 'mbbill/undotree',  { 'on': 'UndotreeToggle'   }
 endif
 
 "snippets
-Plug 'ervandew/supertab'
-if has('python')
-Plug 'SirVer/ultisnips'
-endif
-Plug 'honza/vim-snippets'
+"Plug 'ervandew/supertab'
+"if has('python')
+"Plug 'SirVer/ultisnips'
+"endif
+"Plug 'honza/vim-snippets'
 
 "GIT
 Plug 'airblade/vim-gitgutter'
@@ -45,10 +43,9 @@ Plug 'tpope/vim-fugitive'
 
 "Cool shiznit
 Plug 'kien/ctrlp.vim'
-"Plug 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 Plug 'ap/vim-css-color'
 Plug 'tpope/vim-commentary',        { 'on': '<Plug>Commentary' }
-Plug 'justinmk/vim-gtfo'
 
 " All of your Plugins must be added before the following line
 call plug#end()
@@ -75,21 +72,6 @@ set smarttab
 " always uses spaces instead of tab characters
 set expandtab
 
-" Allow saving of files as sudo when I forgot to start vim using sudo.
-cmap w!! w !sudo tee > /dev/null %
-
-"always display airline
-set laststatus=2
-
-"system clipboard
-set clipboard=unnamedplus
-
-"search
-set incsearch
-set ignorecase
-set smartcase
-set hlsearch
-nmap \q :nohlsearch<CR>
 
 " Linebreak on 500 characters
 set lbr
@@ -97,9 +79,6 @@ set tw=500
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
-
-"shortcuts to command mode
-"nnoremap ; :
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> /
@@ -113,6 +92,14 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
+
+" Fast saving
+nmap <leader>w :w!<cr>
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
@@ -131,6 +118,9 @@ map <leader>t<leader> :tabnext
 let g:lasttab = 1
 nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
+
+" vimrc in a new wertical window
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
@@ -172,10 +162,16 @@ endif
 let g:undotree_WindowLayout = 2
 nnoremap U :UndotreeToggle<CR>
 
+"airline
+set laststatus=2
+"let g:airline_powerline_fonts = 1
 "airline buffer list
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
+set timeoutlen=50
+"set noshowmode
+
 
 "Omnicomplete
 au FileType php setl ofu=phpcomplete#CompletePHP
@@ -216,14 +212,6 @@ set autoread
 
 " Switch to paste mode with F2
 set pastetoggle=<F2>
-
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
-
-" Fast saving
-nmap <leader>w :w!<cr>
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
@@ -274,25 +262,40 @@ set encoding=utf8
 set ffs=unix,dos,mac
 
 " <F10> | NERD Tree
-inoremap <F10> <esc>:NERDTreeToggle<cr>
-nnoremap <F10> :NERDTreeToggle<cr>
-let g:NERDTreeShowHidden=1
+" inoremap <F10> <esc>:NERDTreeToggle<cr>
+" nnoremap <F10> :NERDTreeToggle<cr>
+" let g:NERDTreeShowHidden=1
 
-" ----------------------------------------------------------------------------
+" NETRW
+nnoremap <F10> :Lexplore<cr>
+
+" absolute width of netrw window
+let g:netrw_winsize = -38
+
+" do not display info on the top of window
+let g:netrw_banner = 0
+
+" tree-view
+let g:netrw_liststyle = 3
+
+" sort is affecting only: directories on the top, files below
+let g:netrw_sort_sequence = '[\/]$,*'
+
+" use the previous window to open file
+let g:netrw_browse_split = 4
+
 " vim-commentary
-" ----------------------------------------------------------------------------
 map  gc  <Plug>Commentary
 nmap gcc <Plug>CommentaryLine
 
-"-----------------------------------------------------------------------------
-" snippets
-"-----------------------------------------------------------------------------
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
+" SYNTASTIC
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+
