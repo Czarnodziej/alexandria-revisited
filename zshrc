@@ -78,3 +78,5 @@ export NVM_DIR="/home/marcin/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 export DEFAULT_USER=marcin
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

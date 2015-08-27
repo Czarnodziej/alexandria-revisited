@@ -11,9 +11,13 @@ endif
 call plug#begin('~/.vim/plugged')
 
 "cool things
-"Plug 'Yggdroot/indentLine', { 'on': 'IndentLinesToggle' }
-"Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'    }
+Plug 'Yggdroot/indentLine', { 'on': 'IndentLinesToggle' }
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle'    }
+Plug 'scrooloose/nerdcommenter'
 Plug 'bling/vim-airline'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'scrooloose/syntastic'
+Plug 'ap/vim-css-color'
 
 "syntax plugins
 Plug 'elzr/vim-json'
@@ -23,7 +27,6 @@ Plug 'tpope/vim-markdown'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'nanotech/jellybeans.vim'
 if v:version >= 703
-"Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 Plug 'mbbill/undotree',  { 'on': 'UndotreeToggle'   }
 endif
 
@@ -31,30 +34,11 @@ if has('lua')
 Plug 'Shougo/neocomplete.vim'
 endif
 
-Plug 'Shougo/vimfiler.vim'
-Plug 'Shougo/unite.vim'
-"snippets
-"Plug 'ervandew/supertab'
-"if has('python')
-"Plug 'SirVer/ultisnips'
-"endif
-"Plug 'honza/vim-snippets'
-
 "GIT
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-
-"Cool shiznit
-Plug 'kien/ctrlp.vim'
-Plug 'scrooloose/syntastic'
-Plug 'ap/vim-css-color'
-Plug 'tpope/vim-commentary',        { 'on': '<Plug>Commentary' }
 
 " All of your Plugins must be added before the following line
 call plug#end()
-filetype plugin indent on
-" To ignore plugin indent changes, instead use:
-filetype plugin on
 set t_Co=256
 
 syntax enable
@@ -63,30 +47,16 @@ set background=dark
 colorscheme jellybeans
 
 "tabs
-"size of a hard tabstop
 set tabstop=4
-" size of an "indent"
 set shiftwidth=4
-" a combination of spaces and tabs are used to simulate tab stops at a width
-" other than the (hard)tabstop
 set softtabstop=4
-" make "tab" insert indents instead of tabs at the beginning of a line
 set smarttab
-" always uses spaces instead of tab characters
 set expandtab
 
 " search
-
-" Ignore case when searching
 set ignorecase
-
-" When searching try to be smart about cases
 set smartcase
-
-" Highlight search results
 set hlsearch
-
-" Makes search act like search in modern browsers
 set incsearch
 
 "backup
@@ -101,27 +71,13 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
-
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
-
 " Smart way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" Specify the behavior when switching between buffers
-try
-set switchbuf=useopen,usetab,newtab
-set stal=2
-catch
-endtry
-
-" Return to last edit position when opening files (You want this!)
+" Return to last edit position when opening files
 autocmd BufReadPost *
 \ if line("'\"") > 0 && line("'\"") <= line("$") |
 \ exe "normal! g`\"" |
@@ -145,7 +101,6 @@ endif
 
 " undotree
 let g:undotree_WindowLayout = 2
-nnoremap U :UndotreeToggle<CR>
 
 "airline
 set laststatus=2
@@ -173,10 +128,8 @@ filetype indent on
 " Set to auto read when a file is changed from the outside
 set autoread
 
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
+let mapleader = " "
+let g:mapleader = " "
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -191,13 +144,9 @@ command W w !sudo tee % > /dev/null
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
-" Avoid garbled characters in Chinese language windows OS
-let $LANG='en'
-set langmenu=en
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
+let $LANG='en_US.UTF-8'
+language en_US.UTF-8
 
-" Turn on the WiLd menu
 set wildmenu
 
 " Ignore compiled files
@@ -208,45 +157,18 @@ else
     set wildignore+=.git\*,.hg\*,.svn\*
 endif
 
-"Always show current position
 set ruler
-
-" Height of the command bar
 set cmdheight=2
-
-" A buffer becomes hidden when it is abandoned
 set hid
-
-" Configure backspace so it acts as it should act
 set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
 
-" In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
   set mouse=a
 endif
 
-" Ignore case when searching
-set ignorecase
-
-" When searching try to be smart about cases
-set smartcase
-
-" Highlight search results
-set hlsearch
-
-" Makes search act like search in modern browsers
-set incsearch
-
-" Don't redraw while executing macros (good performance config)
 set lazyredraw
-
-" For regular expressions turn magic on
 set magic
-
-" Show matching brackets when text indicator is over them
 set showmatch
-" How many tenths of a second to blink when matching brackets
 set mat=2
 
 " No annoying sound on errors
@@ -258,20 +180,10 @@ set tm=500
 " Add a bit extra margin to the left
 set foldcolumn=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General abbreviations
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Switch to paste mode with F2
-"set pastetoggle=<leader>pp
-set pastetoggle=<F2>
-
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
-
-" vim-commentary
-map  gc  <Plug>Commentary
-nmap gcc <Plug>CommentaryLine
 
 " SYNTASTIC
 set statusline+=%#warningmsg#
@@ -312,7 +224,6 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplete#undo_completion()
 inoremap <expr><C-l>     neocomplete#complete_common_string()
-
 " Recommended key-mappings.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
@@ -337,3 +248,9 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
+
+"LEADER GOODIES
+nmap <silent> <leader>n :NERDTreeToggle<CR>
+nmap <silent> <leader>u :UndotreeToggle<CR>
+nmap <silent> <leader>p :set paste!<CR>
+nmap <silent> <leader>f :FZF<CR>
