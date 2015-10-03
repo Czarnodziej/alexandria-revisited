@@ -50,7 +50,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(archlinux colored-man git git-extras czarnodziej jsontools systemd tmuxinator zsh-syntax-highlighting history-substring-search)
+plugins=(archlinux command-not-found colored-man git git-extras jsontools systemd tmuxinator zsh-syntax-highlighting history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -61,7 +61,7 @@ fi
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 export EDITOR='vim'
 export TERM="xterm-256color"
@@ -80,3 +80,24 @@ export NVM_DIR="/home/marcin/.nvm"
 export DEFAULT_USER=marcin
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#Basic
+alias ls='LANG=C ls -lah --color --group-directories-first'
+
+#vim
+alias xvim='sudo -e'
+
+#Apps
+alias dnse='xvim /etc/dnsmasq.d/hosts.conf'
+alias dnsr='sudo systemctl restart dnsmasq'
+alias mc='LANG=en_US mc'
+
+#Symfony2
+alias sf='php app/console'
+alias sfcc='sudo rm -rf app/cache/* && sudo rm -rf app/logs/*'
+alias sfccp='php app/console cache:clear --env=prod --no-debug'
+
+#USER
+alias cdw='cd /home/marcin/dev/www'
+alias pacman='sudo pacman'
+alias sysupg='pacaur -Syu'
