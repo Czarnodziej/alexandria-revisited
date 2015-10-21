@@ -1,0 +1,29 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Base16 Color Schemes",
+		"BracketHighlighter",
+		"Color Highlighter",
+		"Dictionaries",
+		"DocBlockr",
+		"Emmet",
+		"Git",
+		"GitGutter",
+		"HTML-CSS-JS Prettify",
+		"INI",
+		"Markdown Extended",
+		"Package Control",
+		"PlainTasks",
+		"SideBarEnhancements",
+		"SublimeCodeIntel",
+		"SublimeLinter",
+		"SublimeLinter-contrib-eslint",
+		"SublimeLinter-json",
+		"SublimeLinter-phpcs",
+		"Theme - Spacegray"
+	]
+}

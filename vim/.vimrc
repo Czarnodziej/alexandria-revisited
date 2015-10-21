@@ -19,14 +19,27 @@ Plug 'ap/vim-css-color'
 Plug 'rking/ag.vim'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'godlygeek/tabular'
+
 " Syntax plugins
 Plug 'elzr/vim-json'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'othree/html5-syntax.vim'
-Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'jelera/vim-javascript-syntax'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'sheerun/vim-polyglot'
+
+" Snippets
+if v:version >= 704
+  Plug 'SirVer/ultisnips'
+endif
+Plug 'honza/vim-snippets'
+
+"Theme
 Plug 'nanotech/jellybeans.vim'
+
 if v:version >= 703
 Plug 'mbbill/undotree',  { 'on': 'UndotreeToggle'   }
 Plug 'pangloss/vim-javascript'
@@ -46,12 +59,18 @@ Plug 'tpope/vim-fugitive'
 call plug#end()
 " }}}
 "{{{Basics
-syntax enable
+syntax on
 set number
 set background=dark
 colorscheme jellybeans
 set nocompatible
 filetype plugin indent on
+set showcmd
+
+"tmux fix
+if &term =~ '256color'
+  set t_ut=
+endif
 
 " Tabs
 set tabstop=2
@@ -64,6 +83,7 @@ set autoindent
 " Search
 set ignorecase smartcase
 set hlsearch incsearch
+set showmatch
 
 " Backup
 set nobackup
@@ -78,12 +98,17 @@ set wrapscan
 set history=100
 set autoread
 
-" Scroll offset
-set so=7
+set scrolloff=3
+
+set visualbell t_vb=    " turn off error beep/flash
+set novisualbell        " turn off visual bell
 
 " Markdown filetype
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 let g:vim_markdown_folding_disabled=1
+
+" conf filetype
+autocmd BufRead,BufNewFile *.conf setf dosini
 
 " Return to last edit position when opening files
 autocmd BufReadPost *
@@ -128,20 +153,14 @@ endif
 set ruler
 set cmdheight=2
 set hid
-set backspace=2
+set backspace=indent,eol,start " make that backspace key work the way it should
 if has('mouse')
   set mouse=a
 endif
 
 set lazyredraw
 set magic
-set showmatch
 set mat=2
-
-set noerrorbells
-set novisualbell
-set t_vb=
-set tm=500
 
 " Add a bit extra margin to the left
 set foldcolumn=1

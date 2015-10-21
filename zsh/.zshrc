@@ -90,7 +90,7 @@ alias xvim='sudo -e'
 #Apps
 alias dnse='xvim /etc/dnsmasq.d/hosts.conf'
 alias dnsr='sudo systemctl restart dnsmasq'
-alias mc='LANG=en_US mc'
+alias mc='LANG=en_US mc -b'
 
 #Symfony2
 alias sf='php app/console'
