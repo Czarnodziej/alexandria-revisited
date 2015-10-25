@@ -1,0 +1,71 @@
+#yummy prompt
+source "$HOME/.zsh/powerlevel9k/powerlevel9k.zsh-theme"
+
+#tasty syntax
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+#substring search
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
+
+
+if [ -f ~/.nvm/nvm.sh ]; then
+    source ~/.nvm/nvm.sh
+fi
+
+export LANG=en_US.UTF-8
+
+export EDITOR='vim'
+export TERM="xterm-256color"
+
+#zsh-syntax-highlighter
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+
+#
+source /home/marcin/.phpbrew/bashrc
+
+# This loads nvm
+export NVM_DIR="/home/marcin/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+export DEFAULT_USER=marcin
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# vim man viewer
+export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma number' -\""
+
+#command-not-found ARCH
+source /usr/share/doc/pkgfile/command-not-found.zsh
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.zsh/base16-shell/base16-ocean.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
+##ALIASES
+#Basic
+alias ls='LANG=C ls -lah --color --group-directories-first'
+
+#vim
+alias xvim='sudo -e'
+
+#Apps
+alias dnse='xvim /etc/dnsmasq.d/hosts.conf'
+alias dnsr='sudo systemctl restart dnsmasq'
+alias mc='LANG=en_US mc -b'
+
+#TMUX
+# -2 = force term 256
+alias tmux='tmux -2'
+alias tmuxw='tmux -2 attach -t WORK'
+
+#Symfony2
+alias sf='php app/console'
+alias sfcc='sudo rm -rf app/cache/* && sudo rm -rf app/logs/*'
+alias sfccp='php app/console cache:clear --env=prod --no-debug'
+
+#USER
+alias cdw='cd /home/marcin/dev/www'
+alias pacman='sudo pacman'
+alias sysupg='pacaur -Syu'
+
