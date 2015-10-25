@@ -21,6 +21,7 @@ Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'godlygeek/tabular'
+"Plug 'edkolev/tmuxline.vim'
 
 " Syntax plugins
 Plug 'elzr/vim-json'
@@ -39,6 +40,7 @@ Plug 'honza/vim-snippets'
 
 "Theme
 Plug 'nanotech/jellybeans.vim'
+Plug 'chriskempson/base16-vim'
 
 if v:version >= 703
 Plug 'mbbill/undotree',  { 'on': 'UndotreeToggle'   }
@@ -62,7 +64,10 @@ call plug#end()
 syntax on
 set number
 set background=dark
-colorscheme jellybeans
+"colorscheme jellybeans
+let base16colorspace=256
+colorscheme base16-default
+
 set nocompatible
 filetype plugin indent on
 set showcmd
@@ -186,6 +191,7 @@ let g:undotree_WindowLayout = 2
 " airline
 set laststatus=2
 let g:airline_powerline_fonts = 1
+"let g:airline_theme='base16'
 set timeoutlen=300
 set noshowmode
 "let g:bufferline_echo = 0
