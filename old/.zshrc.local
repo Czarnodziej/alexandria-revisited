@@ -1,0 +1,173 @@
+# TODO: ANTIGEN
+#
+#
+#
+# Load zsh-syntax-highlighting
+# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#substring search (grml default)
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
+source ~/.zsh/antigen/antigen.zsh
+
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle git
+antigen bundle command-not-found
+
+# Syntax highlighting bundle.
+# antigen bundle zsh-users/zsh-history-substring-search
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# Load the theme.
+# antigen theme robbyrussell
+antigen theme bhilburn/powerlevel9k powerlevel9k
+
+# Tell antigen that you're done.
+antigen apply
+
+
+
+# Load zsh-autosuggestions.
+# source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+# source ~/.zsh/zsh-autosuggestions/autosuggestions.zsh
+
+# # bind UP and DOWN arrow keys
+# zmodload zsh/terminfo
+# bindkey "$terminfo[kcuu1]" history-substring-search-up
+# bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# # # bind UP and DOWN arrow keys (compatibility fallback
+# # # for Ubuntu 12.04, Fedora 21, and MacOSX 10.9 users)
+# bindkey '^[[A' history-substring-search-up
+# bindkey '^[[B' history-substring-search-down
+
+# # bind k and j for VI mode
+# bindkey -M vicmd 'k' history-substring-search-up
+# bindkey -M vicmd 'j' history-substring-search-down
+
+# Enable autosuggestions automatically.
+# zle-line-init() {
+#     zle autosuggest-start
+# }
+# zle -N zle-line-init
+
+
+
+# NVM
+if [ -f ~/.nvm/nvm.sh ]; then
+    source ~/.nvm/nvm.sh
+fi
+
+export LANG=en_US.UTF-8
+
+export EDITOR='vim'
+#export TERM="xterm-256color"
+
+#zsh-syntax-highlighter
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+
+#
+source /home/marcin/.phpbrew/bashrc
+
+DEFAULT_USER="${USER}"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_COMPLETION_TRIGGER=''
+bindkey '^T' fzf-completion
+bindkey '^I' $fzf_default_completion
+
+# vim man viewer
+export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma number' -\""
+
+#command-not-found ARCH
+source /usr/share/doc/pkgfile/command-not-found.zsh
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.zsh/base16-shell/base16-ocean.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
+# such predictable, many useful
+# autoload predict-on
+# predict-on
+
+# # you may also wish to bind it to some keys...
+# zle -N predict-on
+# zle -N predict-off
+# bindkey '^X1' predict-on
+# bindkey '^X2' predict-off
+
+#yummy prompt broken TODO: make custom prompt
+POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S %d.%m.%Y}"
+# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir node_version vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status history time vi_mode)
+POWERLEVEL9K_NODE_VERSION_BACKGROUND='022'
+# # source "$HOME/.zsh/powerlevel9k/powerlevel9k.zsh-theme"
+
+#dunno
+
+#vi-mode
+bindkey -v
+
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
+
+# precmd() { RPROMPT="" }
+# function zle-line-init zle-keymap-select {
+#    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+#    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+#    zle reset-prompt
+# }
+
+# zle -N zle-line-init
+# zle -N zle-keymap-select
+
+export KEYTIMEOUT=1
+
+##ALIASES
+#Basic
+alias ls='LANG=C ls -lah --color --group-directories-first'
+
+#vim
+alias xvim='sudo -e'
+
+#Apps
+alias dnse='xvim /etc/dnsmasq.d/hosts.conf'
+alias dnsr='sudo systemctl restart dnsmasq'
+alias mc='LANG=en_US mc -b'
+
+#TMUX
+# -2 = force term 256
+alias tmux='tmux -2'
+alias tmuxw='tmux -2 attach -t WORK'
+
+#Symfony2
+alias sf='php app/console'
+alias sfcc='sudo rm -rf app/cache/* && sudo rm -rf app/logs/*'
+alias sfccp='php app/console cache:clear --env=prod --no-debug'
+
+#USER
+alias cdw='cd /home/marcin/dev/www'
+alias pacman='sudo pacman'
+alias sysupg='pacaur -Syu'
+
+#FZF
+## fd - cd to selected directory
+fd() {
+  local dir
+  dir=$(find ${1:-*} -path '*/\.*' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m) &&
+  cd "$dir"
+}
+
+# fda - including hidden directories
+fda() {
+  local dir
+  dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
+}
